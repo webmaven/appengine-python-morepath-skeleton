@@ -18,6 +18,9 @@ def hello_world(self, request):
     """Return a friendly HTTP greeting."""
     return 'Hello World!'
 
+config = morepath.setup()
+config.scan()
+config.commit()
 
 #@app.errorhandler(404)
 #def page_not_found(e):
