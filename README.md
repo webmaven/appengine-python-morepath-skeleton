@@ -71,4 +71,4 @@ feedback on this repo.
 See [LICENSE](LICENSE)
 
 ## Author
-Michael R. Bernstein
+[Michael R. Bernstein](http://www.michaelbernstein.com)
