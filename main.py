@@ -21,14 +21,14 @@ def hello_world(self, request):
 def notfound_custom(self, request):
     """REturn a custom 404 error"""
     def set_status_code(response):
-        response.status_code = self.code # pass along 404
+        response.status = self.code # pass along 404
     request.after(set_status_code)
     return "Sorry, Nothing at this URL."
-    
+
 @app.view(model=HTTPInternalServerError)
 def servererror_custom(self, request):
     def set_status_code(response):
-        response.status_code = self.code # pass along 500
+        response.status = self.code # pass along 500
     request.after(set_status_code)
     return "Sorry, unexpected error: {}".format(self.detail)
 
