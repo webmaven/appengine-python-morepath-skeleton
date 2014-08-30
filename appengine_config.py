@@ -12,7 +12,7 @@ import sys
 
 # break up the sys.path
 sys.path, remainder = sys.path[:1], sys.path[1:]
-# addsitedir is added at the beginning.
+# lib/ is added at the beginning.
 site.addsitedir(os.path.join(os.path.dirname(__file__), 'lib'))
 # add the remaining paths back
 sys.path.extend(remainder)
