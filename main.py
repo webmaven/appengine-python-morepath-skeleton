@@ -22,7 +22,7 @@ def hello_world(self, request):
 
 @app.view(model=HTTPNotFound)
 def notfound_custom(self, request):
-    """REturn a custom 404 error"""
+    """Return a custom 404 error"""
     def set_status_code(response):
         response.status = self.code  # pass along 404
     request.after(set_status_code)
