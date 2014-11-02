@@ -4,23 +4,22 @@
 import morepath
 from webob.exc import HTTPNotFound, HTTPInternalServerError
 
-app = morepath.App(name='Hello')
-# Note: We don't need to call run() since our application is embedded within
-# the App Engine WSGI application server.
 
+class App(morepath.App):
+    pass
 
-@app.path('')
+@App.path('')
 class Root(object):
     pass
 
 
-@app.view(model=Root)
+@App.html(model=Root)
 def hello_world(self, request):
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    """Return a friendly HTML greeting."""
+    return '<p>Hello World!</p>'
 
 
-@app.view(model=HTTPNotFound)
+@App.view(model=HTTPNotFound)
 def notfound_custom(self, request):
     """Return a custom 404 error"""
     def set_status_code(response):
@@ -29,13 +28,16 @@ def notfound_custom(self, request):
     return "Sorry, Nothing at this URL."
 
 
-@app.view(model=HTTPInternalServerError)
+@App.view(model=HTTPInternalServerError)
 def servererror_custom(self, request):
     def set_status_code(response):
         response.status = self.code  # pass along 500
     request.after(set_status_code)
     return "Sorry, unexpected error: {}".format(self.detail)
 
+app = App(name='Hello')
+# Note: We don't need to call run() since our application is embedded within
+# the App Engine WSGI application server.
 config = morepath.setup()
 config.scan()
 config.commit()

@@ -4,4 +4,4 @@
 # in `lib/` subdirectory.
 #
 # Note: The `lib` directory is added to `sys.path` by `appengine_config.py`.
-morepath==0.3
+morepath==0.6
