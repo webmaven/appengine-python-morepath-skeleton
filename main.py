@@ -35,7 +35,7 @@ def servererror_custom(self, request):
     request.after(set_status_code)
     return "Sorry, unexpected error: {}".format(self.detail)
 
-app = App(name='Hello')
+app = App()
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 config = morepath.setup()
